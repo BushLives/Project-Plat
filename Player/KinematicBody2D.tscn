@@ -1,12 +1,12 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://Idle.tres" type="Animation" id=1]
-[ext_resource path="res://Movement.tres" type="Animation" id=2]
+[ext_resource path="res://Player/Animations/Idle.tres" type="Animation" id=1]
+[ext_resource path="res://Player/Animations/Movement.tres" type="Animation" id=2]
 [ext_resource path="res://Warrior.gd" type="Script" id=3]
 [ext_resource path="res://Player/Warrior_Sheet-Effect.png" type="Texture" id=4]
-[ext_resource path="res://Fall.tres" type="Animation" id=5]
-[ext_resource path="res://UptoFall.tres" type="Animation" id=6]
-[ext_resource path="res://Jump.tres" type="Animation" id=7]
+[ext_resource path="res://Player/Animations/Fall.tres" type="Animation" id=5]
+[ext_resource path="res://Player/Animations/UptoFall.tres" type="Animation" id=6]
+[ext_resource path="res://Player/Animations/Jump.tres" type="Animation" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.0

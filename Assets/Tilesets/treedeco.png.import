@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/static idle.png-7e47d713529002b0ac5720c332773217.stex"
+path="res://.import/treedeco.png-0d405225dc3d1cdb42ea8e2931419002.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bot Wheel/static idle.png"
-dest_files=[ "res://.import/static idle.png-7e47d713529002b0ac5720c332773217.stex" ]
+source_file="res://Assets/Tilesets/treedeco.png"
+dest_files=[ "res://.import/treedeco.png-0d405225dc3d1cdb42ea8e2931419002.stex" ]
 
 [params]
 

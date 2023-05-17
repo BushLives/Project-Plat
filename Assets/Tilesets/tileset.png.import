@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wake.png-041d880f33cdb746006c4017600543b8.stex"
+path="res://.import/tileset.png-7924f041008afb9ffb5b3279c27310c6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bot Wheel/wake.png"
-dest_files=[ "res://.import/wake.png-041d880f33cdb746006c4017600543b8.stex" ]
+source_file="res://Assets/Tilesets/tileset.png"
+dest_files=[ "res://.import/tileset.png-7924f041008afb9ffb5b3279c27310c6.stex" ]
 
 [params]
 
