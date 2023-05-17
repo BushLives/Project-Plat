@@ -14,6 +14,8 @@ onready var sprite := $Position2D/Sprite
 onready var flip := $Position2D
 
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _physics_process(delta:float) -> void:
 	motion.y += Gravity
@@ -41,7 +43,14 @@ func _physics_process(delta:float) -> void:
 			state.travel("Fall")
 		else:
 			state.travel("Jump")
+			
+	if Input.is_action_pressed("Attack"):
+		player_attack()
+		
 	motion = move_and_slide(motion, UP)
+	
+func player_attack():
+	state.travel("Att_1")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
