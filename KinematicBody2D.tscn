@@ -1,0 +1,106 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Idle.tres" type="Animation" id=1]
+[ext_resource path="res://Movement.tres" type="Animation" id=2]
+[ext_resource path="res://Warrior.gd" type="Script" id=3]
+[ext_resource path="res://Player/Warrior_Sheet-Effect.png" type="Texture" id=4]
+[ext_resource path="res://Fall.tres" type="Animation" id=5]
+[ext_resource path="res://UptoFall.tres" type="Animation" id=6]
+[ext_resource path="res://Jump.tres" type="Animation" id=7]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 41 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Fall"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "Movement"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "UptoFall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=4]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=5]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id=6]
+states/Fall/node = SubResource( 9 )
+states/Fall/position = Vector2( 478, 233 )
+states/Idle/node = SubResource( 2 )
+states/Idle/position = Vector2( 224, 100 )
+states/Jump/node = SubResource( 10 )
+states/Jump/position = Vector2( 157, 233 )
+states/Movement/node = SubResource( 3 )
+states/Movement/position = Vector2( 425, 100 )
+states/UptoFall/node = SubResource( 11 )
+states/UptoFall/position = Vector2( 324, 233 )
+transitions = [ "Movement", "Idle", SubResource( 4 ), "Idle", "Movement", SubResource( 5 ), "Idle", "Jump", SubResource( 12 ), "Jump", "UptoFall", SubResource( 13 ), "UptoFall", "Fall", SubResource( 14 ), "Fall", "Idle", SubResource( 15 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 3 )
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Position2D"]
+position = Vector2( 8, -5 )
+texture = ExtResource( 4 )
+hframes = 6
+vframes = 17
+frame = 41
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Fall = ExtResource( 5 )
+anims/Idle = ExtResource( 1 )
+anims/Jump = ExtResource( 7 )
+anims/Movement = ExtResource( 2 )
+anims/RESET = SubResource( 8 )
+anims/UptoFall = ExtResource( 6 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 6 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 7 )
