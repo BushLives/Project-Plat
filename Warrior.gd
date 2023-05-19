@@ -51,7 +51,16 @@ func _physics_process(delta:float) -> void:
 	
 func player_attack():
 	state.travel("Att_1")
+	
+func _on_Player_attack_body_entered(body):
+	if body.has_method('attacked'):
+		body.attacked()
 
+func attack_detech():
+	print('player deteched')
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+

@@ -185,8 +185,10 @@ anims/UptoFall = ExtResource( 6 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 6 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 7 )
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="body_entered" from="Position2D/Player_attack" to="." method="_on_Player_attack_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
