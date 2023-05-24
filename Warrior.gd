@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
-
 const UP = Vector2(0, -1)
 const Gravity = 20
 const Speed = 200
 const Jump_height = -500
 
 var motion = Vector2()
+var health = 100
 var state
 
 onready var ANIplayer = $AnimationPlayer
@@ -17,7 +17,7 @@ onready var flip := $Position2D
 
 
 # Called when the node enters the scene tree for the first time.
-func _physics_process(delta:float) -> void:
+func _physics_process(_delta:float) -> void:
 	motion.y += Gravity
 	state = $AnimationTree.get("parameters/playback")
 	
@@ -54,10 +54,13 @@ func player_attack():
 	
 func _on_Player_attack_body_entered(body):
 	if body.has_method('attacked'):
-		body.attacked()
+		body.attacked(10)
 
-func attack_detech():
-	print('player deteched')
+func attack_detech(damage):
+	health -= damage
+	print(health)
+	if health <= 0:
+		state.travel("Player_death")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

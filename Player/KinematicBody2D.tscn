@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Player/Animations/Idle.tres" type="Animation" id=1]
 [ext_resource path="res://Player/Animations/Movement.tres" type="Animation" id=2]
@@ -83,9 +83,6 @@ tracks/4/keys = {
 [sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Att_1"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
-animation = "Dead"
-
 [sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Fall"
 
@@ -97,6 +94,9 @@ animation = "Jump"
 
 [sub_resource type="AnimationNodeAnimation" id=3]
 animation = "Movement"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "Dead"
 
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "UptoFall"
@@ -129,11 +129,11 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
 [sub_resource type="AnimationNodeStateMachine" id=6]
 states/Att_1/node = SubResource( 16 )
 states/Att_1/position = Vector2( 223.125, -26 )
-states/Dead/node = SubResource( 20 )
-states/Dead/position = Vector2( 625.5, 106.5 )
 states/Fall/node = SubResource( 9 )
 states/Fall/position = Vector2( 627, 233.938 )
 states/Idle/node = SubResource( 2 )
@@ -142,10 +142,13 @@ states/Jump/node = SubResource( 10 )
 states/Jump/position = Vector2( 222.219, 234.25 )
 states/Movement/node = SubResource( 3 )
 states/Movement/position = Vector2( 425.5, 106 )
+states/Player_death/node = SubResource( 20 )
+states/Player_death/position = Vector2( 627, 107 )
 states/UptoFall/node = SubResource( 11 )
 states/UptoFall/position = Vector2( 425.75, 234.094 )
-transitions = [ "Movement", "Idle", SubResource( 4 ), "Idle", "Movement", SubResource( 5 ), "Idle", "Jump", SubResource( 12 ), "Jump", "UptoFall", SubResource( 13 ), "UptoFall", "Fall", SubResource( 14 ), "Fall", "Idle", SubResource( 15 ), "Idle", "Att_1", SubResource( 17 ), "Att_1", "Idle", SubResource( 18 ), "Att_1", "Dead", SubResource( 21 ), "Movement", "Dead", SubResource( 22 ), "Fall", "Dead", SubResource( 23 ) ]
+transitions = [ "Movement", "Idle", SubResource( 4 ), "Idle", "Movement", SubResource( 5 ), "Idle", "Jump", SubResource( 12 ), "Jump", "UptoFall", SubResource( 13 ), "UptoFall", "Fall", SubResource( 14 ), "Fall", "Idle", SubResource( 15 ), "Idle", "Att_1", SubResource( 17 ), "Att_1", "Idle", SubResource( 18 ), "Att_1", "Player_death", SubResource( 21 ), "Movement", "Player_death", SubResource( 22 ), "Fall", "Player_death", SubResource( 23 ), "Idle", "Player_death", SubResource( 24 ) ]
 start_node = "Idle"
+end_node = "Player_death"
 graph_offset = Vector2( -392, -116 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]

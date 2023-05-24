@@ -3,6 +3,7 @@ extends KinematicBody2D
 var velocity = Vector2(150, 0)
 var gravity = 20
 var turned_side:bool
+var health = 100
 
 onready var state = $AnimationTree.get('parameters/playback')
 
@@ -40,9 +41,22 @@ func _on_detech_player_body_exited(body):
 
 func _on_attack_to_player_body_entered(body):
 	if body.is_in_group('Player1'):
-		body.attack_detech()
+		body.attack_detech(10)
 
 
 func _on_player_is_back_body_entered(body):
 	if body.is_in_group('Player1'):
 		change_state()
+
+func attacked(damage):
+	$TextureProgress.visible = true
+	health -= damage
+	$TextureProgress.value = health
+	$Timer.wait_time = 1
+	$Timer.start()
+	if health <= 0:
+		state.travel("Dead")
+		$TextureProgress.visible = false
+
+func _on_Timer_timeout():
+	$TextureProgress.visible = false

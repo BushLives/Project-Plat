@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Skeleton/Skeleton enemy.png" type="Texture" id=2]
 [ext_resource path="res://Enemy_Attack.tres" type="Animation" id=3]
-[ext_resource path="res://Assets/Health Bar Assets/rpg (2).png" type="Texture" id=4]
+[ext_resource path="res://Assets/Health Bar Assets/pixil-frame-0.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Health Bar Assets/pixil-frame-1.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
@@ -11,7 +12,7 @@ height = 22.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "Dead"
-length = 1.2
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -23,6 +24,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 13, 13, 14, 15, 16, 17, 18, 19, 20, 21, 25 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -152,11 +167,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -68.0
-margin_top = -68.0
-margin_right = 77.0
-margin_bottom = 77.0
+margin_left = -20.0
+margin_top = -22.0
+margin_right = 60.0
+margin_bottom = 58.0
+rect_scale = Vector2( 0.5, 0.5 )
+step = 0.0
+value = 100.0
 texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -202,7 +221,10 @@ modulate = Color( 0.160784, 0.784314, 0.12549, 1 )
 position = Vector2( 7.5, -1 )
 shape = SubResource( 17 )
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="detech_player" to="." method="_on_detech_player_body_entered"]
 [connection signal="body_exited" from="detech_player" to="." method="_on_detech_player_body_exited"]
 [connection signal="body_entered" from="attack_to_player" to="." method="_on_attack_to_player_body_entered"]
 [connection signal="body_entered" from="player_is_back" to="." method="_on_player_is_back_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
