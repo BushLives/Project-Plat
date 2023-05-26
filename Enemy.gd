@@ -10,7 +10,7 @@ onready var state = $AnimationTree.get('parameters/playback')
 func _ready():
 	state.travel('Walk')
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity.y += gravity
 	
 	move_and_slide(velocity,Vector2.UP)
