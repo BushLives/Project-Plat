@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Player/Animations/Idle.tres" type="Animation" id=1]
 [ext_resource path="res://Player/Animations/Movement.tres" type="Animation" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Player/Animations/Jump.tres" type="Animation" id=7]
 [ext_resource path="res://Player/Animations/Att_1.tres" type="Animation" id=8]
 [ext_resource path="res://Dead.tres" type="Animation" id=9]
+[ext_resource path="res://Wenrexa Interface UI KIT #4/PNG/ProgressBar_01/BarV1_ProgressBarBorder.png" type="Texture" id=10]
+[ext_resource path="res://Wenrexa Interface UI KIT #4/PNG/ProgressBar_01/BarV1_ProgressBar.png" type="Texture" id=11]
+[ext_resource path="res://Wenrexa Interface UI KIT #4/PNG/ProgressBar_01/BarV1_Bar.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 12, 12.5 )
@@ -157,7 +160,7 @@ graph_offset = Vector2( -392, -116 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="Warrior" type="KinematicBody2D"]
 script = ExtResource( 3 )
 
 [node name="Position2D" type="Position2D" parent="."]
@@ -196,6 +199,19 @@ active = true
 parameters/playback = SubResource( 7 )
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+visible = false
+margin_left = -18.0
+margin_top = -24.0
+margin_right = 23.0
+margin_bottom = -19.0
+max_value = 250.0
+value = 250.0
+texture_under = ExtResource( 12 )
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
+nine_patch_stretch = true
 
 [connection signal="body_entered" from="Position2D/Player_attack" to="." method="_on_Player_attack_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

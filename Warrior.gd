@@ -12,8 +12,8 @@ var state
 onready var ANIplayer = $AnimationPlayer
 onready var sprite := $Position2D/Sprite
 onready var flip := $Position2D
-
-
+onready var healthbar:= $TextureProgress
+onready var timer := $Timer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -57,15 +57,17 @@ func _on_Player_attack_body_entered(body):
 		body.attacked(10)
 
 func attack_detech(damage):
+	healthbar.visible = true
 	health -= damage
+	healthbar.value = health
+	timer.wait_time = 1
+	timer.start()
 	print(health)
 	if health <= 0:
 		print("dead")
 		state.travel("Dead")
 		set_physics_process(false)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
-
+func _on_Timer_timeout():
+	healthbar.visible = false
