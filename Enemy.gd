@@ -3,7 +3,7 @@ extends KinematicBody2D
 var velocity = Vector2(150, 0)
 var gravity = 20
 var turned_side:bool
-var health = 100
+var health = 50
 
 onready var state = $AnimationTree.get('parameters/playback')
 
@@ -56,7 +56,8 @@ func attacked(damage):
 	$Timer.start()
 	if health <= 0:
 		state.travel("Dead")
+		set_physics_process(false)
 		$TextureProgress.visible = false
-
+		
 func _on_Timer_timeout():
 	$TextureProgress.visible = false

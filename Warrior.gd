@@ -6,7 +6,7 @@ const Speed = 200
 const Jump_height = -500
 
 var motion = Vector2()
-var health = 100
+var health = 250
 var state
 
 onready var ANIplayer = $AnimationPlayer
@@ -60,7 +60,9 @@ func attack_detech(damage):
 	health -= damage
 	print(health)
 	if health <= 0:
-		state.travel("Player_death")
+		print("dead")
+		state.travel("Dead")
+		set_physics_process(false)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
