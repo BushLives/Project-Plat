@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://World.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Coin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/KinematicBody2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://C1011.png" type="Texture" id=5]
+[ext_resource path="res://World2.gd" type="Script" id=6]
+
+[node name="World" instance=ExtResource( 1 )]
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" parent="Enemy_place/Area2D" index="0"]
+position = Vector2( 758, 388 )
+
+[node name="CollisionShape2D2" parent="Enemy_place/Area2D" index="1"]
+position = Vector2( 1062, 384 )
+
+[node name="Skeleton" parent="Enemy_place" index="1" instance=ExtResource( 3 )]
+position = Vector2( 802, 400 )
+scale = Vector2( 2, 2 )
+
+[node name="CollisionShape2D" parent="Enemy_place2/Area2D" index="0"]
+position = Vector2( -170, 380 )
+
+[node name="CollisionShape2D2" parent="Enemy_place2/Area2D" index="1"]
+position = Vector2( 466, 384 )
+
+[node name="Skeleton" parent="Enemy_place2" index="1" instance=ExtResource( 3 )]
+position = Vector2( -130, 400 )
+scale = Vector2( 2, 2 )
+
+[node name="Skeleton" parent="Enemy_place3" index="1" instance=ExtResource( 3 )]
+position = Vector2( 530, 112 )
+scale = Vector2( 2, 2 )
+
+[node name="Coins" type="YSort" parent="." index="4"]
+
+[node name="Coin" parent="Coins" index="0" instance=ExtResource( 2 )]
+position = Vector2( 448, 320 )
+scale = Vector2( 0.44001, 0.44001 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="Coin2" parent="Coins" index="1" instance=ExtResource( 2 )]
+position = Vector2( 1088, 384 )
+scale = Vector2( 0.44001, 0.44001 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="Coin3" parent="Coins" index="2" instance=ExtResource( 2 )]
+position = Vector2( 1280, 384 )
+scale = Vector2( 0.44001, 0.44001 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="Coin4" parent="Coins" index="3" instance=ExtResource( 2 )]
+position = Vector2( 1472, 384 )
+scale = Vector2( 0.44001, 0.44001 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="Coin5" parent="Coins" index="4" instance=ExtResource( 2 )]
+position = Vector2( 1664, 384 )
+scale = Vector2( 0.44001, 0.44001 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="Coin6" parent="Coins" index="5" instance=ExtResource( 2 )]
+position = Vector2( 1856, 384 )
+scale = Vector2( 0.44001, 0.44001 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="Coin7" parent="Coins" index="6" instance=ExtResource( 2 )]
+position = Vector2( 2048, 384 )
+scale = Vector2( 0.44001, 0.44001 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="Coin8" parent="Coins" index="7" instance=ExtResource( 2 )]
+position = Vector2( 2240, 384 )
+scale = Vector2( 0.44001, 0.44001 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="Coin9" parent="Coins" index="8" instance=ExtResource( 2 )]
+position = Vector2( 2432, 384 )
+scale = Vector2( 0.44001, 0.44001 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="Coin10" parent="Coins" index="9" instance=ExtResource( 2 )]
+position = Vector2( 2624, 384 )
+scale = Vector2( 0.44001, 0.44001 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="Coin11" parent="Coins" index="10" instance=ExtResource( 2 )]
+position = Vector2( 2920, 472 )
+scale = Vector2( 0.44001, 0.44001 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="Warrior" parent="." index="5" groups=["Player1"] instance=ExtResource( 4 )]
+position = Vector2( -200, 384 )
+scale = Vector2( 4, 4 )
+collision_layer = 3
+
+[node name="Camera2D" type="Camera2D" parent="Warrior" index="6"]
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="6"]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -896.0
+margin_bottom = -472.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="CanvasLayer" index="1"]
+margin_left = 120.0
+margin_top = 56.0
+margin_right = 160.0
+margin_bottom = 70.0
+text = "X0"

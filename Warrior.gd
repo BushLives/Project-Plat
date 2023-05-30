@@ -7,6 +7,7 @@ const Jump_height = -750
 
 var motion = Vector2()
 var health = 250
+var coin = 0
 var state
 
 onready var ANIplayer = $AnimationPlayer
@@ -71,3 +72,7 @@ func attack_detech(damage):
 
 func _on_Timer_timeout():
 	healthbar.visible = false
+
+func getcoin():
+	coin += 1
+	print(coin)
