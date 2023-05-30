@@ -46,6 +46,7 @@ func _physics_process(_delta:float) -> void:
 			state.travel("Jump")
 			
 	if Input.is_action_pressed("Attack"):
+		
 		player_attack()
 		
 	motion = move_and_slide(motion, UP)
@@ -56,19 +57,25 @@ func player_attack():
 func _on_Player_attack_body_entered(body):
 	if body.has_method('attacked'):
 		body.attacked(10)
+		frameFreeze(0.05,1.0)
 
 func attack_detech(damage):
-	healthbar.visible = true
-	health -= damage
-	healthbar.value = health
-	timer.wait_time = 1
-	timer.start()
-	print(health)
+	
 	if health <= 0:
 		print("dead")
 		state.travel("Dead")
-		set_physics_process(false)
-
+	elif health > 0:
+		healthbar.visible = true
+		health -= damage
+		healthbar.value = health
+		timer.wait_time = 1
+		timer.start()
+		print(health)
+		
+func frameFreeze(timescale, duration):
+	Engine.time_scale = timescale
+	yield(get_tree().create_timer(duration * timescale), "timeout")
+	Engine.time_scale = 1.0
 
 func _on_Timer_timeout():
 	healthbar.visible = false
