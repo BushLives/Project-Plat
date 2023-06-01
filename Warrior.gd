@@ -2,23 +2,28 @@ extends KinematicBody2D
 
 const UP = Vector2(0, -1)
 const Gravity = 20
-const Speed = 350
 const Jump_height = -750
 
 var motion = Vector2()
-var health = 250
+var health = 75
+var Speed = 350.0
 var coin = 0
+var hit = 0
+
+var base_damage = 5 
 var state
 
 onready var ANIplayer = $AnimationPlayer
 onready var sprite := $Position2D/Sprite
 onready var flip := $Position2D
-onready var healthbar:= $TextureProgress
+onready var hud := $GUI
+onready var healthbar:= $GUI/Health
+onready var coinGUI := $GUI/Label
 onready var timer := $Timer
-
 
 # Called when the node enters the scene tree for the first time.
 func _physics_process(_delta:float) -> void:
+	
 	motion.y += Gravity
 	state = $AnimationTree.get("parameters/playback")
 	
@@ -49,6 +54,7 @@ func _physics_process(_delta:float) -> void:
 		
 		player_attack()
 		
+		
 	motion = move_and_slide(motion, UP)
 	
 func player_attack():
@@ -56,30 +62,43 @@ func player_attack():
 	
 func _on_Player_attack_body_entered(body):
 	if body.has_method('attacked'):
-		body.attacked(10)
-		frameFreeze(0.05,1.0)
+		body.attacked(base_damage)
+		
 
 func attack_detech(damage):
 	
 	if health <= 0:
 		print("dead")
 		state.travel("Dead")
+		hud.visible = false
+		
+		set_physics_process(false)
+		
 	elif health > 0:
-		healthbar.visible = true
+		$Timer.wait_time = 1
+		$Timer.start()
+		hit = 1
+		healthbar.value -= damage
 		health -= damage
-		healthbar.value = health
-		timer.wait_time = 1
-		timer.start()
 		print(health)
+		
 		
 func frameFreeze(timescale, duration):
 	Engine.time_scale = timescale
 	yield(get_tree().create_timer(duration * timescale), "timeout")
 	Engine.time_scale = 1.0
 
-func _on_Timer_timeout():
-	healthbar.visible = false
 
 func getcoin():
 	coin += 1
-	print(coin)
+	coinGUI.text =(" X" + str(coin))
+
+func GAME_OVER():
+	get_tree().change_scene("res://Game_over.tscn")
+
+func _on_Timer_timeout():
+	hit = 0
+	print(health)
+	if hit == 0 and health < 100:
+		health += 1
+		healthbar.value = health
