@@ -37,3 +37,4 @@ rect_scale = Vector2( 2.43468, 3.11928 )
 text = "Main Menu"
 
 [connection signal="pressed" from="Play Again" to="." method="_on_Play_Again_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]

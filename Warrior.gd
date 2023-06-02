@@ -6,6 +6,7 @@ const Jump_height = -750
 
 var motion = Vector2()
 var health = 75
+var heal = 150
 var Speed = 350.0
 var coin = 0
 var hit = 0
@@ -18,6 +19,7 @@ onready var sprite := $Position2D/Sprite
 onready var flip := $Position2D
 onready var hud := $GUI
 onready var healthbar:= $GUI/Health
+onready var healbar:= $GUI/Stam
 onready var coinGUI := $GUI/Label
 onready var timer := $Timer
 
@@ -53,7 +55,12 @@ func _physics_process(_delta:float) -> void:
 	if Input.is_action_pressed("Attack"):
 		
 		player_attack()
-		
+	
+	if health <= 0:
+		print("dead")
+		state.travel("Dead")
+		hud.visible = false
+		set_physics_process(false)
 		
 	motion = move_and_slide(motion, UP)
 	
@@ -66,21 +73,12 @@ func _on_Player_attack_body_entered(body):
 		
 
 func attack_detech(damage):
-	
-	if health <= 0:
-		print("dead")
-		state.travel("Dead")
-		hud.visible = false
-		
-		set_physics_process(false)
-		
-	elif health > 0:
-		$Timer.wait_time = 1
-		$Timer.start()
-		hit = 1
-		healthbar.value -= damage
-		health -= damage
-		print(health)
+	$Timer.wait_time = 1
+	$Timer.start()
+	hit = 1
+	healthbar.value -= damage
+	health -= damage
+	print(health)
 		
 		
 func frameFreeze(timescale, duration):
@@ -99,6 +97,8 @@ func GAME_OVER():
 func _on_Timer_timeout():
 	hit = 0
 	print(health)
-	if hit == 0 and health < 100:
+	if hit == 0 and health < healthbar.max_value and heal > 0:
 		health += 1
+		heal -= 1
+		healbar.value -= 1
 		healthbar.value = health

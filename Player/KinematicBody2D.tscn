@@ -159,7 +159,7 @@ states/UptoFall/position = Vector2( 425.75, 234.094 )
 transitions = [ "Movement", "Idle", SubResource( 4 ), "Idle", "Movement", SubResource( 5 ), "Idle", "Jump", SubResource( 12 ), "Jump", "UptoFall", SubResource( 13 ), "UptoFall", "Fall", SubResource( 14 ), "Fall", "Idle", SubResource( 15 ), "Idle", "Att_1", SubResource( 17 ), "Att_1", "Idle", SubResource( 18 ), "Att_1", "Dead", SubResource( 21 ), "Movement", "Dead", SubResource( 22 ), "Fall", "Dead", SubResource( 23 ), "Idle", "Dead", SubResource( 24 ), "Jump", "Dead", SubResource( 25 ), "UptoFall", "Dead", SubResource( 26 ) ]
 start_node = "Idle"
 end_node = "Dead"
-graph_offset = Vector2( -392, -116 )
+graph_offset = Vector2( -92, -62 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
@@ -245,8 +245,8 @@ margin_top = -144.0
 margin_right = 80.0
 margin_bottom = -104.0
 rect_scale = Vector2( 18.061, 2.63368 )
-max_value = 250.0
-value = 250.0
+max_value = 150.0
+value = 150.0
 texture_progress = ExtResource( 12 )
 nine_patch_stretch = true
 
