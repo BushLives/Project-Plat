@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Player/Animations/Idle.tres" type="Animation" id=1]
 [ext_resource path="res://Player/Animations/Movement.tres" type="Animation" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Hurt.tres" type="Animation" id=13]
 [ext_resource path="res://Assets/Health Bar Assets/Pixilart selection (4).png" type="Texture" id=14]
 [ext_resource path="res://C1011.png" type="Texture" id=15]
+[ext_resource path="res://8x8 Western.ttf" type="DynamicFontData" id=16]
 
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 12, 12.5 )
@@ -163,6 +164,10 @@ graph_offset = Vector2( -92, -62 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
+[sub_resource type="DynamicFont" id=27]
+size = 40
+font_data = ExtResource( 16 )
+
 [node name="Warrior" type="KinematicBody2D"]
 script = ExtResource( 3 )
 
@@ -209,27 +214,30 @@ parameters/playback = SubResource( 7 )
 [node name="TextureRect" type="TextureRect" parent="GUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -896.0
-margin_bottom = -472.0
+margin_left = -11.0
+margin_top = -4.0
+margin_right = -907.0
+margin_bottom = -476.0
 texture = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="GUI"]
-margin_left = 120.0
-margin_top = 56.0
-margin_right = 160.0
-margin_bottom = 70.0
+margin_left = 108.0
+margin_top = 44.0
+margin_right = 188.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 27 )
 text = "X0"
 
 [node name="Health" type="TextureProgress" parent="GUI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = -144.0
-margin_right = 80.0
-margin_bottom = -104.0
+margin_left = 14.0
+margin_top = -85.0
+margin_right = 34.0
+margin_bottom = -65.0
 rect_scale = Vector2( 18.061, 2.63368 )
 max_value = 75.0
 value = 75.0
@@ -240,10 +248,10 @@ nine_patch_stretch = true
 [node name="Stam" type="TextureProgress" parent="GUI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = -144.0
-margin_right = 80.0
-margin_bottom = -104.0
+margin_left = 14.0
+margin_top = -85.0
+margin_right = 34.0
+margin_bottom = -65.0
 rect_scale = Vector2( 18.061, 2.63368 )
 max_value = 150.0
 value = 150.0
@@ -253,10 +261,10 @@ nine_patch_stretch = true
 [node name="Shield" type="TextureProgress" parent="GUI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = -144.0
-margin_right = 80.0
-margin_bottom = -104.0
+margin_left = 14.0
+margin_top = -85.0
+margin_right = 34.0
+margin_bottom = -65.0
 rect_scale = Vector2( 18.061, 2.63368 )
 max_value = 250.0
 value = 250.0
