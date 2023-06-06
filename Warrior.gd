@@ -7,7 +7,7 @@ const Jump_height = -750
 var motion = Vector2()
 var health = 75
 var heal = 150
-var Speed = 350.0
+var Speed = 450.0
 var coin = 0
 var hit = 0
 
