@@ -5,13 +5,13 @@ const Gravity = 20
 const Jump_height = -750
 
 var motion = Vector2()
-var health = 75
+var health = 100
 var heal = 150
 var Speed = 450.0
 var coin = 0
 var hit = 0
 
-var base_damage = 5 
+var base_damage = 8
 var state
 
 onready var ANIplayer = $AnimationPlayer
@@ -23,9 +23,7 @@ onready var healbar:= $GUI/Stam
 onready var coinGUI := $GUI/Label
 onready var timer := $Timer
 
-# Called when the node enters the scene tree for the first time.
 func _physics_process(_delta:float) -> void:
-	
 	motion.y += Gravity
 	state = $AnimationTree.get("parameters/playback")
 	
@@ -53,7 +51,6 @@ func _physics_process(_delta:float) -> void:
 			state.travel("Jump")
 			
 	if Input.is_action_pressed("Attack"):
-		
 		player_attack()
 	
 	if health <= 0:
@@ -61,6 +58,7 @@ func _physics_process(_delta:float) -> void:
 		state.travel("Dead")
 		hud.visible = false
 		set_physics_process(false)
+		# frameFreeze(0.05,1.0)
 		
 	motion = move_and_slide(motion, UP)
 	
@@ -71,32 +69,28 @@ func _on_Player_attack_body_entered(body):
 	if body.has_method('attacked'):
 		body.attacked(base_damage)
 		
-
 func attack_detech(damage):
 	$Timer.wait_time = 1
 	$Timer.start()
 	hit = 1
 	healthbar.value -= damage
 	health -= damage
-	print(health)
-		
+	state.travel("Hurt")
 		
 func frameFreeze(timescale, duration):
 	Engine.time_scale = timescale
 	yield(get_tree().create_timer(duration * timescale), "timeout")
 	Engine.time_scale = 1.0
 
-
 func getcoin():
 	coin += 1
-	coinGUI.text =(" X" + str(coin))
+	coinGUI.text =("X" + str(coin))
 
 func GAME_OVER():
 	get_tree().change_scene("res://Game_over.tscn")
 
 func _on_Timer_timeout():
 	hit = 0
-	print(health)
 	if hit == 0 and health < healthbar.max_value and heal > 0:
 		health += 1
 		heal -= 1
