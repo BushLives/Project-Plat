@@ -58,7 +58,10 @@ func _physics_process(_delta:float) -> void:
 		state.travel("Dead")
 		hud.visible = false
 		set_physics_process(false)
-		# frameFreeze(0.05,1.0)
+		frameFreeze(0.05,1.0)
+	elif hit == 1 and health > 0:
+		state.travel("Hurt")
+		hit = 0
 		
 	motion = move_and_slide(motion, UP)
 	
@@ -75,7 +78,8 @@ func attack_detech(damage):
 	hit = 1
 	healthbar.value -= damage
 	health -= damage
-	state.travel("Hurt")
+	if hit == 1 and health > 0:
+		state.travel("Hurt")
 		
 func frameFreeze(timescale, duration):
 	Engine.time_scale = timescale
@@ -92,7 +96,9 @@ func GAME_OVER():
 func _on_Timer_timeout():
 	hit = 0
 	if hit == 0 and health < healthbar.max_value and heal > 0:
-		health += 1
-		heal -= 1
-		healbar.value -= 1
-		healthbar.value = health
+		health += 5
+		heal -= 5
+		healbar.value -= 5
+		healthbar.value += 5
+		if health > 100:
+			health = 100

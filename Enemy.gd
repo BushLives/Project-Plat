@@ -44,7 +44,7 @@ func _on_detech_player_body_entered(body):
 			
 func _on_detech_player_body_exited(body):
 	if body.is_in_group('Player1'):
-		state.travel('Walk')
+		state.travel("Walk")
 		if turned_side == true and health > 0:
 			velocity.x = -150
 		elif turned_side == false and health > 0:

@@ -1,4 +1,4 @@
 extends Control
 
 func _on_Play_pressed():
-	get_tree().change_scene("res://World10.tscn")
+	get_tree().change_scene("res://World3.tscn")
