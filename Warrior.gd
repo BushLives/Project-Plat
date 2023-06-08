@@ -5,11 +5,12 @@ const Gravity = 20
 const Jump_height = -750
 
 var motion = Vector2()
-var health = 100
+var health = 150
 var heal = 150
 var Speed = 450.0
 var coin = 0
 var hit = 0
+var shield = 0
 
 var base_damage = 8
 var state
@@ -21,12 +22,18 @@ onready var hud := $GUI
 onready var healthbar:= $GUI/Health
 onready var healbar:= $GUI/Stam
 onready var coinGUI := $GUI/Label
+onready var shieldbar := $GUI/Shield
 onready var timer := $Timer
+
+func _ready():
+	healthbar.max_value = health
+	
+	
 
 func _physics_process(_delta:float) -> void:
 	motion.y += Gravity
 	state = $AnimationTree.get("parameters/playback")
-	
+	shieldbar.value = shield
 	if Input.is_action_pressed("ui_right"):
 		state.travel("Movement")
 		flip.scale.x = 1
@@ -58,7 +65,7 @@ func _physics_process(_delta:float) -> void:
 		state.travel("Dead")
 		hud.visible = false
 		set_physics_process(false)
-		frameFreeze(0.05,1.0)
+		frameFreeze(0.035,1.0)
 	elif hit == 1 and health > 0:
 		state.travel("Hurt")
 		hit = 0
@@ -73,13 +80,16 @@ func _on_Player_attack_body_entered(body):
 		body.attacked(base_damage)
 		
 func attack_detech(damage):
-	$Timer.wait_time = 1
-	$Timer.start()
-	hit = 1
-	healthbar.value -= damage
-	health -= damage
-	if hit == 1 and health > 0:
-		state.travel("Hurt")
+	healthbar.value = health
+	if shield > 0:
+		shield -= damage
+	else:
+		$Timer.wait_time = 1
+		$Timer.start()
+		hit = 1
+		health -= damage
+		if hit == 1 and health > 0:
+			state.travel("Hurt")
 		
 func frameFreeze(timescale, duration):
 	Engine.time_scale = timescale
@@ -93,6 +103,8 @@ func getcoin():
 func GAME_OVER():
 	get_tree().change_scene("res://Game_over.tscn")
 
+
+
 func _on_Timer_timeout():
 	hit = 0
 	if hit == 0 and health < healthbar.max_value and heal > 0:
@@ -100,5 +112,5 @@ func _on_Timer_timeout():
 		heal -= 5
 		healbar.value -= 5
 		healthbar.value += 5
-		if health > 100:
-			health = 100
+		if health > healthbar.max_value:
+			health = 150

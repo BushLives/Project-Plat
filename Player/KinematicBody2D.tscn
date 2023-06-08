@@ -250,8 +250,21 @@ margin_top = -85.0
 margin_right = 34.0
 margin_bottom = -65.0
 rect_scale = Vector2( 18.061, 2.63368 )
-value = 100.0
+max_value = 150.0
+value = 150.0
 texture_over = ExtResource( 11 )
+texture_progress = ExtResource( 10 )
+nine_patch_stretch = true
+
+[node name="Shield" type="TextureProgress" parent="GUI"]
+modulate = Color( 0.756863, 0, 1, 1 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 14.0
+margin_top = -85.0
+margin_right = 34.0
+margin_bottom = -65.0
+rect_scale = Vector2( 18.061, 2.63368 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
 
@@ -268,7 +281,7 @@ value = 150.0
 texture_progress = ExtResource( 12 )
 nine_patch_stretch = true
 
-[node name="Shield" type="TextureProgress" parent="GUI"]
+[node name="Dodge" type="TextureProgress" parent="GUI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 14.0

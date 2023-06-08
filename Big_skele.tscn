@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Big_skele.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Health Bar Assets/pixil-frame-0.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Health Bar Assets/pixil-frame-1.png" type="Texture" id=4]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[node name="Big Skele" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="1"]
+modulate = Color( 0.752941, 0, 0, 1 )
+
+[node name="AnimationTree" parent="." index="3"]
+parameters/playback = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="detech_player" index="0"]
+position = Vector2( 16, 0 )
+
+[node name="GUI" type="Control" parent="." index="8"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Health" type="TextureProgress" parent="GUI" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -42.0
+margin_right = 40.0
+margin_bottom = 38.0
+rect_scale = Vector2( 0.5, 0.5 )
+max_value = 250.0
+step = 0.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+nine_patch_stretch = true
+
+[node name="Shield" type="TextureProgress" parent="GUI" index="1"]
+modulate = Color( 0, 0.415686, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -42.0
+margin_right = 40.0
+margin_bottom = 38.0
+rect_scale = Vector2( 0.5, 0.5 )
+max_value = 75.0
+step = 0.0
+texture_progress = ExtResource( 4 )
+nine_patch_stretch = true
+
+[node name="CollisionShape2D" parent="." index="9"]
+position = Vector2( 0, -1 )
