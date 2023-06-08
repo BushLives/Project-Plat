@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game_over.gd" type="Script" id=1]
+[ext_resource path="res://8x8 Western.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
 
 [node name="Game_over" type="Control"]
 margin_right = 40.0
@@ -13,28 +20,36 @@ margin_bottom = 600.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 376.0
-margin_top = 248.0
-margin_right = 437.0
-margin_bottom = 262.0
+margin_left = 192.0
+margin_top = 240.0
+margin_right = 336.0
+margin_bottom = 256.0
 rect_scale = Vector2( 4.50615, 4.97193 )
-text = "You Died!"
+custom_fonts/font = SubResource( 1 )
+text = "GAME OVER"
+uppercase = true
 
 [node name="Play Again" type="Button" parent="."]
-margin_left = 168.0
+margin_left = 72.0
 margin_top = 384.0
-margin_right = 245.0
-margin_bottom = 404.0
+margin_right = 244.0
+margin_bottom = 406.0
 rect_scale = Vector2( 2.43468, 3.11928 )
-text = "Play Again"
+custom_fonts/font = SubResource( 2 )
+text = "PLAY AGAIN"
+flat = true
+expand_icon = true
 
 [node name="MainMenu" type="Button" parent="."]
-margin_left = 664.0
+margin_left = 552.0
 margin_top = 384.0
-margin_right = 741.0
-margin_bottom = 404.0
+margin_right = 708.0
+margin_bottom = 406.0
 rect_scale = Vector2( 2.43468, 3.11928 )
-text = "Main Menu"
+custom_fonts/font = SubResource( 2 )
+text = "MAIN MENU"
+flat = true
+expand_icon = true
 
 [connection signal="pressed" from="Play Again" to="." method="_on_Play_Again_pressed"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]
