@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/background.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/Pixel Lofi.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/Credits.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 52
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 23
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 27
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 22
+font_data = ExtResource( 2 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 8, 576 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 1 )
+
+[node name="Back" type="Button" parent="."]
+margin_left = 56.0
+margin_top = 512.0
+margin_right = 180.0
+margin_bottom = 571.0
+custom_fonts/font = SubResource( 1 )
+text = "BACK"
+flat = true
+
+[node name="Title" type="Label" parent="."]
+margin_left = 272.0
+margin_top = 64.0
+margin_right = 761.0
+margin_bottom = 88.0
+custom_fonts/font = SubResource( 2 )
+text = "(Everyone here, but me can be found on itch.io)"
+
+[node name="Text" type="Label" parent="."]
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 168.0
+margin_bottom = 145.0
+custom_fonts/font = SubResource( 3 )
+text = "Fonts: Lil Cthulhu,
+Controls asset: Hyohnoo
+Titleset: Trixie
+GUI: adwitr
+Coin: NYKNCK
+Player Character: Clembod
+Enemy: 	AstroBob"
+
+[node name="SubTitle" type="Label" parent="."]
+margin_left = 400.0
+margin_top = 384.0
+margin_right = 652.0
+margin_bottom = 406.0
+custom_fonts/font = SubResource( 4 )
+text = "(Everyting else is by me)"
+
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

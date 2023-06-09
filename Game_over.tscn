@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Game_over.gd" type="Script" id=1]
-[ext_resource path="res://8x8 Western.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/Game_over.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/8x8 Western.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
