@@ -40,9 +40,9 @@ text = "BACK"
 flat = true
 
 [node name="Title" type="Label" parent="."]
-margin_left = 272.0
+margin_left = 296.0
 margin_top = 64.0
-margin_right = 761.0
+margin_right = 785.0
 margin_bottom = 88.0
 custom_fonts/font = SubResource( 2 )
 text = "(Everyone here, but me can be found on itch.io)"
@@ -53,7 +53,8 @@ margin_top = 128.0
 margin_right = 168.0
 margin_bottom = 145.0
 custom_fonts/font = SubResource( 3 )
-text = "Fonts: Lil Cthulhu,
+text = "                                                     Assets
+Fonts: Lil Cthulhu,
 Controls asset: Hyohnoo
 Titleset: Trixie
 GUI: adwitr
@@ -62,11 +63,11 @@ Player Character: Clembod
 Enemy: 	AstroBob"
 
 [node name="SubTitle" type="Label" parent="."]
-margin_left = 400.0
+margin_left = 408.0
 margin_top = 384.0
-margin_right = 652.0
+margin_right = 672.0
 margin_bottom = 406.0
 custom_fonts/font = SubResource( 4 )
-text = "(Everyting else is by me)"
+text = "(Everything else is by me)"
 
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
