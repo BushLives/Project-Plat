@@ -3,20 +3,27 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 const Gravity = 25
 const Jump_height = -750
+const Speed_max = 450.0
 
+var Speed = Speed_max
 var motion = Vector2()
 var health = 150
 var heal = 150
-var Speed = 450.0
 var coin = 0
-var hit = 0
-var shield = 0
-var dodge = false
-var dodge_counter = 10.0
-
 var base_damage = 8
-var state
+var shield = 0
+
+var slide_speed = 400
+
+var hit = 0
+var dodge_counter = 10.0
 var counter = 0
+
+var state
+var dodge = false
+var sliding = false
+var crouch = false
+
 
 onready var ANIplayer = $AnimationPlayer
 onready var sprite := $Position2D/Sprite
@@ -29,6 +36,8 @@ onready var coinGUI := $GUI/Label
 onready var shieldbar := $GUI/Shield
 onready var timer := $Timer
 
+
+
 func _ready():
 	healthbar.max_value = health
 
@@ -37,21 +46,38 @@ func _physics_process(_delta:float) -> void:
 	state = $AnimationTree.get("parameters/playback")
 	shieldbar.value = shield
 	if Input.is_action_pressed("ui_right"):
-		state.travel("Movement")
 		flip.scale.x = 1
 		motion.x = Speed
-	elif Input.is_action_pressed("ui_left"):
 		state.travel("Movement")
+			
+	elif Input.is_action_pressed("ui_left"):
 		flip.scale.x = -1
 		motion.x = -Speed
+		state.travel("Movement")
 	else: 
 		motion.x = 0
 		state.travel("Idle")
 		
+	
+	
+	if Input.is_action_pressed("ui_down"):
+		crouch = true
+	else:
+		crouch = false
+		sliding = false
+		
+	if crouch == true and motion.x == 0:
+		state.travel("Crouch")
+	elif crouch == true and motion.x > 0:
+		state.travel("Sliding")
+	elif crouch == true and motion.x < 0:
+		state.travel("Sliding")
+		
 	if is_on_floor():
 		if Input.is_action_pressed("ui_up"):
+			sliding = false
 			motion.y = Jump_height
-	else:
+	elif sliding == false and crouch == false:
 		if motion.y == 0:
 			state.travel("UptoFall")
 		elif motion.y > 0:
@@ -72,7 +98,7 @@ func _physics_process(_delta:float) -> void:
 		state.travel("Hurt")
 		hit = 0
 		
-	if Input.is_action_just_pressed("ui_select") and counter <= 0 and dodge_counter > 0 or Input.is_action_just_pressed("ui_down") and counter <= 0 and dodge_counter > 0 :
+	if Input.is_action_just_pressed("ui_select") and counter <= 0 and dodge_counter > 0:
 		$Timer.wait_time = 1
 		$Timer.start()
 		dodge = true
@@ -134,3 +160,5 @@ func _on_Timer_timeout():
 	elif counter > 0:
 		counter -= 1
 		print(counter)
+	elif sliding == true:
+		sliding = false

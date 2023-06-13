@@ -58,9 +58,6 @@ step = 0.0
 texture_progress = ExtResource( 4 )
 nine_patch_stretch = true
 
-[node name="CollisionShape2D" parent="." index="9"]
-position = Vector2( 0, -1 )
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="10"]
 position = Vector2( 0, -16.5 )
 shape = SubResource( 2 )

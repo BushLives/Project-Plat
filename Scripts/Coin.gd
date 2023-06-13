@@ -6,7 +6,6 @@ func _ready() -> void:
 func _on_body_entered(body):
 	if body.has_method("getcoin"):
 		body.base_damage += 0.5
-		body.Speed += 0.5
 		body.shield += 5
 		body.getcoin()
 		queue_free()

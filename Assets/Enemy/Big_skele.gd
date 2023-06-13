@@ -3,8 +3,8 @@ extends KinematicBody2D
 var velocity = Vector2(450, 0)
 var gravity = 20
 var turned_side:bool
-var health = 1
-var shield = 0 
+var health = 650
+var shield = 100
 var base_damage = 8
 
 onready var state = $AnimationTree.get('parameters/playback')
