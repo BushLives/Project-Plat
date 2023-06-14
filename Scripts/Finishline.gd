@@ -7,6 +7,9 @@ func _on_body_entered(body):
 	set_process(false)
 	if body.is_in_group("Player1"):
 		body.set_physics_process(false)
+		body.hud.visible = false
+		body.end_hud.visible = true
+		body.end_coin.text = ("Coins Collected: " + str(body.coin) + " / " + str(40))
 
 func finish_game(body):
 	body.GUI.Visible = false

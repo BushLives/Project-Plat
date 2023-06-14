@@ -29,14 +29,14 @@ onready var ANIplayer = $AnimationPlayer
 onready var sprite := $Position2D/Sprite
 onready var flip := $Position2D
 onready var hud := $GUI
+onready var end_hud := $End_Game_GUI
+onready var end_coin := $End_Game_GUI/Coin
 onready var healthbar:= $GUI/Health
 onready var healbar:= $GUI/Stam
 onready var dodgebar:= $GUI/Dodge
 onready var coinGUI := $GUI/Label
 onready var shieldbar := $GUI/Shield
 onready var timer := $Timer
-
-
 
 func _ready():
 	healthbar.max_value = health
@@ -146,8 +146,6 @@ func getcoin():
 func GAME_OVER():
 	get_tree().change_scene("res://Game_over.tscn")
 
-
-
 func _on_Timer_timeout():
 	sprite.modulate.a8 = 255
 	dodge = false
@@ -163,3 +161,8 @@ func _on_Timer_timeout():
 		counter -= 1
 		print(counter)
 		
+func _on_MM_pressed():
+	get_tree().change_scene("res://Main_Menu.tscn")
+	
+func _on_Q_pressed():
+	get_tree().quit()

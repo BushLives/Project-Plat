@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Player/Animations/Idle.tres" type="Animation" id=1]
 [ext_resource path="res://Player/Animations/Movement.tres" type="Animation" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://Player/Slide_Idle.tres" type="Animation" id=18]
 [ext_resource path="res://Player/Sliding.tres" type="Animation" id=19]
 [ext_resource path="res://Player/Crouch.tres" type="Animation" id=20]
+[ext_resource path="res://Assets/pixil-frame-0 (2).png" type="Texture" id=21]
+[ext_resource path="res://Fonts/Pixel Lofi.otf" type="DynamicFontData" id=22]
 
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 12, 12.5 )
@@ -214,6 +216,22 @@ graph_offset = Vector2( -376, -82 )
 size = 40
 font_data = ExtResource( 16 )
 
+[sub_resource type="DynamicFont" id=41]
+size = 81
+font_data = ExtResource( 22 )
+
+[sub_resource type="DynamicFont" id=42]
+size = 26
+font_data = ExtResource( 22 )
+
+[sub_resource type="DynamicFont" id=43]
+size = 36
+font_data = ExtResource( 22 )
+
+[sub_resource type="DynamicFont" id=44]
+size = 36
+font_data = ExtResource( 22 )
+
 [node name="Warrior" type="KinematicBody2D"]
 script = ExtResource( 3 )
 
@@ -260,7 +278,6 @@ parameters/playback = SubResource( 7 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="GUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="GUI"]
 anchor_right = 1.0
@@ -334,5 +351,53 @@ value = 10.0
 texture_progress = ExtResource( 14 )
 nine_patch_stretch = true
 
+[node name="End_Game_GUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="End" type="TextureRect" parent="End_Game_GUI"]
+margin_left = 192.0
+margin_top = 128.0
+margin_right = 320.0
+margin_bottom = 192.0
+rect_scale = Vector2( 5, 5 )
+texture = ExtResource( 21 )
+
+[node name="YouWin" type="Label" parent="End_Game_GUI"]
+margin_left = 448.0
+margin_top = 184.0
+margin_right = 729.0
+margin_bottom = 271.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 41 )
+text = "You Win!"
+
+[node name="Coin" type="Label" parent="End_Game_GUI"]
+margin_left = 256.0
+margin_top = 240.0
+margin_right = 459.0
+margin_bottom = 267.0
+custom_fonts/font = SubResource( 42 )
+text = "Coins Collected: "
+
+[node name="MM" type="Button" parent="End_Game_GUI"]
+margin_left = 600.0
+margin_top = 232.0
+margin_right = 768.0
+margin_bottom = 274.0
+custom_fonts/font = SubResource( 43 )
+text = "Main Menu"
+flat = true
+
+[node name="Q" type="Button" parent="End_Game_GUI"]
+margin_left = 648.0
+margin_top = 304.0
+margin_right = 725.0
+margin_bottom = 346.0
+custom_fonts/font = SubResource( 44 )
+text = "Quit"
+flat = true
+
 [connection signal="body_entered" from="Position2D/Player_attack" to="." method="_on_Player_attack_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="End_Game_GUI/MM" to="." method="_on_MM_pressed"]
+[connection signal="pressed" from="End_Game_GUI/Q" to="." method="_on_Q_pressed"]
