@@ -135,7 +135,7 @@ margin_bottom = 524.0
 custom_fonts/font = SubResource( 2 )
 text = "W: Jump
 A: Run right
-S: Dodge
+S: Crouch
 D: Run left
 
 left click: Attack

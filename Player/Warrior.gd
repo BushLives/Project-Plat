@@ -62,6 +62,8 @@ func _physics_process(_delta:float) -> void:
 	
 	if Input.is_action_pressed("ui_down"):
 		crouch = true
+	elif Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_right") and crouch == true:
+		sliding = true
 	else:
 		crouch = false
 		sliding = false
@@ -70,14 +72,14 @@ func _physics_process(_delta:float) -> void:
 		state.travel("Crouch")
 	elif crouch == true and motion.x > 0:
 		state.travel("Sliding")
-	elif crouch == true and motion.x < 0:
+	elif crouch == true and motion.x < 0 and is_on_floor():
 		state.travel("Sliding")
 		
 	if is_on_floor():
 		if Input.is_action_pressed("ui_up"):
-			sliding = false
+			crouch = false
 			motion.y = Jump_height
-	elif sliding == false and crouch == false:
+	elif crouch == false:
 		if motion.y == 0:
 			state.travel("UptoFall")
 		elif motion.y > 0:
@@ -160,5 +162,4 @@ func _on_Timer_timeout():
 	elif counter > 0:
 		counter -= 1
 		print(counter)
-	elif sliding == true:
-		sliding = false
+		
