@@ -16,7 +16,7 @@ var shield = 0
 var slide_speed = 400
 
 var hit = 0
-var dodge_counter = 10.0
+var dodge_counter = 0
 var counter = 0
 
 var state
@@ -100,11 +100,11 @@ func _physics_process(_delta:float) -> void:
 		state.travel("Hurt")
 		hit = 0
 		
-	if Input.is_action_just_pressed("ui_select") and counter <= 0 and dodge_counter > 0:
+	if Input.is_action_just_pressed("ui_select") and counter <= 0 and dodge_counter <= 10:
 		$Timer.wait_time = 1
 		$Timer.start()
 		dodge = true
-		dodge_counter -= 1
+		dodge_counter += 1
 		dodgebar.value -= 1
 		sprite.modulate.a8 = 150
 		counter += 1
