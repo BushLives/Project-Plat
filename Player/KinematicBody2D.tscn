@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Player/Animations/Idle.tres" type="Animation" id=1]
 [ext_resource path="res://Player/Animations/Movement.tres" type="Animation" id=2]
@@ -232,6 +232,10 @@ font_data = ExtResource( 22 )
 size = 36
 font_data = ExtResource( 22 )
 
+[sub_resource type="DynamicFont" id=45]
+size = 30
+font_data = ExtResource( 22 )
+
 [node name="Warrior" type="KinematicBody2D"]
 script = ExtResource( 3 )
 
@@ -396,6 +400,17 @@ margin_bottom = 346.0
 custom_fonts/font = SubResource( 44 )
 text = "Quit"
 flat = true
+
+[node name="Congrats" type="Label" parent="End_Game_GUI"]
+visible = false
+margin_left = 256.0
+margin_top = 280.0
+margin_right = 514.0
+margin_bottom = 379.0
+custom_fonts/font = SubResource( 45 )
+text = "       Congrats!
+You collected ALL 
+      the coins."
 
 [connection signal="body_entered" from="Position2D/Player_attack" to="." method="_on_Player_attack_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -10,6 +10,8 @@ func _on_body_entered(body):
 		body.hud.visible = false
 		body.end_hud.visible = true
 		body.end_coin.text = ("Coins Collected: " + str(body.coin) + " / " + str(40))
+		if body.coin == 40:
+			body.congrats.visible = true
 
 func finish_game(body):
 	body.GUI.Visible = false

@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/pixil-frame-0 (3).png" type="Texture" id=1]
+[ext_resource path="res://Player/WarriorE.png" type="Texture" id=2]
+[ext_resource path="res://Assets/background.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/8x8 Western.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Tilesets/Default.tres" type="TileSet" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 45
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 45
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 47
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 54
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 22
+font_data = ExtResource( 4 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 1024, 704 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="Background2" type="Sprite" parent="."]
+position = Vector2( 1024, -448 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 3 )
+flip_h = true
+flip_v = true
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 8, 8 )
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( 458752, 2, 0, 458753, 1, 0, 458771, 12, 65536, 458772, 12, 65537, 458773, 12, 65538, 458774, 12, 65537, 458775, 12, 65539, 524288, 2, 65536, 524291, 11, 1, 524292, 11, 1, 524293, 11, 2, 524309, 6, 1, 589824, 2, 65536, 589825, 11, 65537, 589826, 11, 65537, 589827, 2, 2, 589828, 2, 65537, 589829, 11, 65538, 589830, 12, 0, 589831, 12, 1, 589832, 12, 2, 589833, 12, 3, 589845, 6, 0, 655360, 11, 65537, 655361, 2, 65538, 655362, 11, 65537, 655363, 11, 65537, 655364, 11, 65537, 655365, 11, 65538, 655367, 6, 1, 655378, 7, 0, 655379, 7, 1, 655380, 1, 0, 655382, 11, 1, 655383, 11, 1, 720896, 11, 65537, 720897, 11, 65537, 720898, 11, 65537, 720899, 11, 65537, 720900, 2, 65538, 720901, 11, 65538, 720903, 6, 0, 720912, 7, 0, 720913, 7, 1, 720914, 7, 65536, 720915, 11, 65537, 720918, 2, 1, 720919, 11, 65537, 786432, 2, 65537, 786433, 11, 65537, 786434, 11, 65537, 786435, 11, 65537, 786436, 11, 65537, 786437, 11, 65539, 786438, 11, 1, 786439, 2, 0, 786440, 11, 1, 786441, 11, 1, 786442, 2, 0, 786443, 1, 0, 786445, 11, 1, 786446, 2, 0, 786447, 11, 1, 786448, 7, 65536, 786449, 2, 65538, 786450, 0, 4, 786451, 2, 1, 786452, 2, 65536, 786453, 11, 65537, 786454, 11, 65537, 786455, 2, 65538, 851968, 11, 65537, 851969, 11, 65537, 851970, 11, 65537, 851971, 11, 65537, 851972, 11, 65537, 851973, 11, 65537, 851974, 2, 65536, 851975, 11, 65537, 851976, 2, 65538, 851977, 11, 65537, 851978, 2, 65536, 851981, 11, 65537, 851982, 2, 65536, 851983, 11, 65537, 851984, 11, 65537, 851985, 11, 65537, 851986, 11, 65537, 851987, 11, 65537, 851988, 11, 65537, 851989, 11, 65537, 851990, 11, 65537, 851991, 11, 65537, 917504, 11, 65537, 917505, 11, 65537, 917506, 11, 65537, 917507, 11, 65537, 917508, 11, 65537, 917509, 11, 65537, 917510, 11, 65537, 917511, 11, 65537, 917512, 11, 65537, 917513, 11, 65537, 917514, 11, 65537, 917515, 11, 65537, 917516, 11, 65537, 917517, 11, 65537, 917518, 11, 65537, 917519, 2, 65538, 917520, 11, 65537, 917521, 11, 65537, 917522, 11, 65537, 917523, 11, 65537, 917524, 11, 65537, 917525, 11, 65537, 917526, 11, 65537, 917527, 11, 65537, 983040, 11, 65537, 983041, 11, 65537, 983042, 11, 65537, 983043, 11, 65537, 983044, 11, 65537, 983045, 11, 65537, 983046, 11, 65537, 983047, 11, 65537, 983048, 11, 65537, 983049, 11, 65537, 983050, 11, 65537, 983051, 11, 65537, 983052, 11, 65537, 983053, 11, 65537, 983054, 11, 65537, 983055, 11, 65537, 983056, 11, 65537, 983057, 11, 65537, 983058, 11, 65537, 983059, 11, 65537, 983060, 11, 65537, 983061, 11, 65537, 983062, 11, 65537, 983063, 11, 65537 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 768, 504 )
+current = true
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="WarriorE" type="Sprite" parent="."]
+position = Vector2( 512, 488 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+offset = Vector2( 1, 1 )
+hframes = 6
+vframes = 17
+
+[node name="Play" type="Button" parent="."]
+margin_left = 656.0
+margin_top = 288.0
+margin_right = 732.0
+margin_bottom = 310.0
+rect_scale = Vector2( 3, 3 )
+custom_fonts/font = SubResource( 1 )
+button_mask = 7
+text = "PLAY"
+flat = true
+clip_text = true
+expand_icon = true
+
+[node name="Controls" type="Button" parent="."]
+margin_left = 584.0
+margin_top = 392.0
+margin_right = 956.0
+margin_bottom = 444.0
+custom_fonts/font = SubResource( 2 )
+text = "CONTROLS"
+flat = true
+
+[node name="Credits" type="Button" parent="."]
+margin_left = 608.0
+margin_top = 488.0
+margin_right = 936.0
+margin_bottom = 540.0
+custom_fonts/font = SubResource( 3 )
+text = "CREDITS"
+flat = true
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 672.0
+margin_top = 584.0
+margin_right = 872.0
+margin_bottom = 638.0
+custom_fonts/font = SubResource( 4 )
+text = "QUIT"
+flat = true
+
+[node name="Title" type="Label" parent="."]
+margin_left = 264.0
+margin_top = 120.0
+margin_right = 1290.0
+margin_bottom = 175.0
+custom_fonts/font = SubResource( 5 )
+text = "A simple platformer"
+uppercase = true
+
+[node name="Sub" type="Label" parent="."]
+margin_left = 272.0
+margin_top = 184.0
+margin_right = 580.0
+margin_bottom = 207.0
+custom_fonts/font = SubResource( 6 )
+uppercase = true
+
+[node name="Pixil-frame-0(3)" type="Sprite" parent="."]
+position = Vector2( 1376, 392 )
+scale = Vector2( 1.375, 1.39286 )
+texture = ExtResource( 1 )

@@ -28,9 +28,12 @@ var crouch = false
 onready var ANIplayer = $AnimationPlayer
 onready var sprite := $Position2D/Sprite
 onready var flip := $Position2D
-onready var hud := $GUI
+
 onready var end_hud := $End_Game_GUI
 onready var end_coin := $End_Game_GUI/Coin
+onready var congrats := $End_Game_GUI/Congrats
+
+onready var hud := $GUI
 onready var healthbar:= $GUI/Health
 onready var healbar:= $GUI/Stam
 onready var dodgebar:= $GUI/Dodge
@@ -162,7 +165,10 @@ func _on_Timer_timeout():
 		print(counter)
 		
 func _on_MM_pressed():
-	get_tree().change_scene("res://Main_Menu.tscn")
+	if coin == 40:
+		get_tree().change_scene("res://Main_menu2.tscn")
+	else:
+		get_tree().change_scene("res://Main_Menu.tscn")
 	
 func _on_Q_pressed():
 	get_tree().quit()
