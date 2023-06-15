@@ -1,14 +1,5 @@
 
-
-
-
-
-
-
-
-https://clembod.itch.io/warrior-free-animation-set
-https://trixelized.itch.io/kinda-cute-forest
-https://penusbmic.itch.io/dungeon-enemy-pack-3
+Controls are in the main menu, please look at that menu before playing.
 
 
 
@@ -22,36 +13,3 @@ https://penusbmic.itch.io/dungeon-enemy-pack-3
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-==============================================================================
-
-Hey!!!!!
-
-Thank you for downloading my little asset pack <3
-
-
-You can use this asset anywhere, giving credit to me would be appreciated!
-If you really like this asset and want more of these to be made in the future,
-a small donation on my itch page is a big motivation! uwu
-
--Trix
-
-==============================================================================
