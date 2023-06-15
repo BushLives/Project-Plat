@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/licensed-image.jpeg-6c2e84317e16613bdf22c12d54661941.stex"
+path="res://.import/licensed-image.jpeg-1e0f39d3d0d0bc6881fe84724abd7988.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scripts/licensed-image.jpeg"
-dest_files=[ "res://.import/licensed-image.jpeg-6c2e84317e16613bdf22c12d54661941.stex" ]
+source_file="res://Assets/licensed-image.jpeg"
+dest_files=[ "res://.import/licensed-image.jpeg-1e0f39d3d0d0bc6881fe84724abd7988.stex" ]
 
 [params]
 

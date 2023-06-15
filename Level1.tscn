@@ -13,9 +13,9 @@
 [ext_resource path="res://Player/KinematicBody2D.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Enemy/Big_skele.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Fonts/Pixel Lofi.otf" type="DynamicFontData" id=13]
-[ext_resource path="res://Scripts/licensed-image.jpeg" type="Texture" id=14]
+[ext_resource path="res://Assets/licensed-image.jpeg" type="Texture" id=14]
 [ext_resource path="res://Assets/worklight-halogen-2-x-500w-portable-w-tripod-stand-3a77d54c-bb44-45f9-a4f7-56ae5866d40c.webp" type="Texture" id=15]
-[ext_resource path="res://Guapo.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/Guapo.gd" type="Script" id=16]
 [ext_resource path="res://Assets/flashbanggg.mp3" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=5]
@@ -104,7 +104,7 @@ position = Vector2( 2016, 192 )
 scale = Vector2( 1802.53, 542.971 )
 monitoring = false
 
-[node name="Licensed-image" type="Sprite" parent="Guapo"]
+[node name="White" type="Sprite" parent="Guapo"]
 visible = false
 position = Vector2( 2208, -533.952 )
 scale = Vector2( 4.32813, 3.22644 )
