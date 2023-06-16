@@ -129,3 +129,8 @@ uppercase = true
 position = Vector2( 1376, 392 )
 scale = Vector2( 1.375, 1.39286 )
 texture = ExtResource( 1 )
+
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Controls" to="." method="_on_Controls_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
