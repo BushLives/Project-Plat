@@ -14,8 +14,8 @@ func _on_Cheese_body_entered(body):
 		timer.wait_time = 1.25
 		timer.start()
 		entered += 1
-		if body.is_in_group("Player1") and entered >= 1 and counter >= 1:
-			body.attack_detech(99999)
+		body.attack_detech(99999)
+			
 			
 				
 
