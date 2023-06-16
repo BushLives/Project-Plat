@@ -3,6 +3,7 @@ extends Node2D
 onready var timer = $Timer
 onready var flashbang = $White
 onready var Insta = $Area2D
+onready var text = $Label2
 onready var sound = $AudioStreamPlayer
 
 var counter = 0
@@ -11,9 +12,12 @@ var entered = 0
 func _on_Cheese_body_entered(body):
 	if body.is_in_group("Player1"):
 		print("Has fallen into a trap!")
+		text.text = "YOU HAVE FALLEN IN TO MY TRAP!"
 		timer.wait_time = 1.25
 		timer.start()
 		entered += 1
+		timer.wait_time = 1.25
+		timer.start()
 		body.attack_detech(99999)
 			
 			

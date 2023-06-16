@@ -1,6 +1,7 @@
 extends Area2D
 
 onready var timer = $Timer
+
 var body_detch = false
 
 func _on_Area2D_body_entered(body):
